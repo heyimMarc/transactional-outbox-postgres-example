@@ -121,4 +121,4 @@ MIT, see [LICENSE](LICENSE).
 
 ## Background
 
-A longer write-up lives on my blog: [The Transactional Outbox on PostgreSQL](https://www.marc-nuetzel.de/posts/2026-09-transactional-outbox-postgresql/) *(publishes 2026-09-21)*.
+A longer write-up lives on my blog: [The Transactional Outbox on PostgreSQL](https://www.marc-nuetzel.de/posts/transactional-outbox-postgresql/) *(publishes 2026-10-26)*.
