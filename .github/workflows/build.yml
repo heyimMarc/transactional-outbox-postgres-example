@@ -1,0 +1,30 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: temurin
+          cache: maven
+
+      # No service container and no docker setup step: the tests start their own
+      # Postgres through Testcontainers, and the ubuntu-latest runner already has
+      # a working Docker daemon. Declaring Postgres here as well would mean the
+      # CI run exercised a different database than a local `mvn verify` does.
+      - run: mvn -B verify
+
+      - if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
+          retention-days: 7
